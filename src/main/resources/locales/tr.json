@@ -1,3 +1,61 @@
 {
-  "hello-world": "Merhaba dünya!"
+  "common": {
+    "save": "Kaydet",
+    "cancel": "İptal",
+    "delete": "Sil",
+    "add": "Ekle",
+    "actions": "İşlemler"
+  },
+  "pages": {
+    "staff-management": {
+      "title": "Ekip",
+      "count": "{count} Kişi"
+    },
+    "staff": {
+      "title": "Ekibimiz"
+    }
+  },
+  "staff": {
+    "name": "İsim",
+    "role": "Rol",
+    "priority": "Öncelik",
+    "description": "Açıklama",
+    "avatar": "Avatar URL",
+    "social-links": "Sosyal Linkler",
+    "add-new": "Yeni Ekip Üyesi Ekle",
+    "edit": "Üyeyi Düzenle",
+    "delete": "Üyeyi Sil",
+    "confirm-delete": "Bu ekip üyesini silmek istediğinize emin misiniz?",
+    "no-staff": "Ekip üyesi bulunamadı."
+  },
+  "settings": {
+    "title": "Ayarlar",
+    "page-url": "Sayfa URL'si",
+    "view-mode": "Görünüm Modu",
+    "display-location": "Görünüm Yeri",
+    "display-location-page": "Tema Sayfası",
+    "display-location-support": "Destek Bölümü"
+  },
+  "toasts": {
+    "save-success": "Ayarlar başarıyla kaydedildi.",
+    "staff-created": "Ekip üyesi başarıyla oluşturuldu.",
+    "staff-updated": "Ekip üyesi başarıyla güncellendi.",
+    "delete-success": "Ekip üyesi başarıyla silindi.",
+    "error": "Bir hata oluştu."
+  },
+  "view-modes": {
+    "list": "Liste",
+    "card": "Kart",
+    "grid": "Kare"
+  },
+  "permissions": {
+    "MANAGE_STAFF": {
+      "title": "Ekibi Yönet",
+      "description": "Ekip üyelerini ekleyebilir, düzenleyebilir veya silebilir."
+    },
+    "MANAGE_STAFF_SETTINGS": {
+      "title": "Ekip Sayfası Ayarları",
+      "description": "Ekip sayfası görünümünü ve ayarlarını güncelleyebilir."
+    }
+  }
 }

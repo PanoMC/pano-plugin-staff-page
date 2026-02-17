@@ -1,0 +1,61 @@
+{
+    "common": {
+        "save": "Сохранить",
+        "cancel": "Отмена",
+        "delete": "Удалить",
+        "add": "Добавить",
+        "actions": "Действия"
+    },
+    "pages": {
+        "staff-management": {
+            "title": "Команда",
+            "count": "{count} Участников"
+        },
+        "staff": {
+            "title": "Наша команда"
+        }
+    },
+    "staff": {
+        "name": "Имя",
+        "role": "Роль",
+        "priority": "Приоритет",
+        "description": "Описание",
+        "avatar": "Avatar URL",
+        "social-links": "Социальные сети",
+        "add-new": "Добавить участника",
+        "edit": "Редактировать",
+        "delete": "Удалить",
+        "confirm-delete": "Вы уверены, что хотите удалить этого участника?",
+        "no-staff": "Участники не найдены."
+    },
+    "settings": {
+        "title": "Настройки",
+        "page-url": "URL страницы",
+        "view-mode": "Режим просмотра",
+        "display-location": "Место отображения",
+        "display-location-page": "Страница темы",
+        "display-location-support": "Раздел поддержки"
+    },
+    "toasts": {
+        "save-success": "Настройки успешно сохранены.",
+        "staff-created": "Участник успешно создан.",
+        "staff-updated": "Участник успешно обновлен.",
+        "delete-success": "Участник успешно удален.",
+        "error": "Произошла ошибка."
+    },
+    "view-modes": {
+        "list": "Список",
+        "card": "Карточка",
+        "grid": "Сетка"
+    },
+    "permissions": {
+        "MANAGE_STAFF": {
+            "title": "Управление командой",
+            "description": "Может добавлять, редактировать или удалять участников."
+        },
+        "MANAGE_STAFF_SETTINGS": {
+            "title": "Настройки команды",
+            "description": "Может обновлять внешний вид и настройки страницы команды."
+        }
+    }
+}
