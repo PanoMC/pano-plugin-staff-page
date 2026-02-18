@@ -6,14 +6,14 @@
         type="button"
         class="btn btn-link px-2"
         data-bs-toggle="dropdown"
-        title={$_('common.actions') || 'Actions'}
+        use:tooltip={[$_('common.actions') || 'Actions']}
         aria-label={$_('common.actions') || 'Actions'}>
         <span class="fas fa-ellipsis-v"></span>
       </button>
       <div class="dropdown-menu animate__animated animate__fadeIn">
         <button type="button" class="dropdown-item" on:click={() => onEdit(member)}>
           <i class="fas fa-pen me-2"></i>
-          {$_('staff.edit')}
+          {$_('common.edit')}
         </button>
         <button type="button" class="dropdown-item text-danger" on:click={() => onDelete(member)}>
           <i class="fas fa-trash me-2"></i>
@@ -28,47 +28,48 @@
     <code>{member.id}</code>
   </td>
 
-  <!-- Avatar -->
-  <td class="align-middle cursor-pointer" style="width: 60px;" on:click={() => onEdit(member)}>
-    {#if member.avatarUrl}
-      <img src={member.avatarUrl} alt={member.name} class="rounded-circle" style="width: 32px; height: 32px; object-fit: cover;" />
-    {:else}
-      <div class="bg-light rounded-circle text-center" style="width: 32px; height: 32px; line-height: 32px;">
-        <i class="fas fa-user text-secondary"></i>
-      </div>
-    {/if}
-  </td>
-
-  <!-- Name & Role -->
+  <!-- Name (Combined with Avatar) -->
   <td class="align-middle">
     <button
       type="button"
-      class="btn btn-link p-0 focus-ring rounded text-decoration-none d-block text-truncate fw-bold text-start"
+      class="btn btn-link p-1 focus-ring rounded-pill d-inline-flex align-items-center gap-2 text-decoration-none"
       on:click={() => onEdit(member)}
-      title={member.name}>
-      {member.name}
+      use:tooltip={[$_('common.edit')]}>
+      {#if member.avatarUrl}
+        <img
+          src={member.avatarUrl}
+          alt={member.name}
+          class="rounded-circle shadow-sm"
+          style="width: 32px; height: 32px; object-fit: cover;" />
+      {:else}
+        <div
+          class="text-bg-light rounded-circle text-center"
+          style="width: 32px; height: 32px; line-height: 32px;">
+          <i class="fas fa-user"></i>
+        </div>
+      {/if}
+      <div class="text-start pe-2">
+        <span class="fw-bold">{member.name}</span>
+      </div>
     </button>
-    <small class="text-muted">{member.role}</small>
+  </td>
+
+  <!-- Role -->
+  <td class="align-middle text-center">
+    <span class="badge text-bg-light">{member.role}</span>
   </td>
 
   <!-- Priority -->
-  <td class="align-middle text-center cursor-pointer" on:click={() => onEdit(member)}>
-    <span class="badge bg-light text-dark border">
-      {member.priority}
-    </span>
+  <td class="align-middle text-center">
+    {member.priority}
   </td>
 </tr>
 
 <script>
   import { _ } from '../../main';
+  import tooltip from '@panomc/sdk/utils/tooltip';
 
   export let member;
   export let onEdit;
   export let onDelete;
 </script>
-
-<style>
-  .cursor-pointer {
-    cursor: pointer;
-  }
-</style>

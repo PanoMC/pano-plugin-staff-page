@@ -1,14 +1,10 @@
 <article class="container vstack gap-3">
   <!-- Action Menu -->
-  <PageActions>
-    <div slot="left">
-    </div>
-    <div slot="right">
-      <button type="button" class="btn btn-secondary" on:click={() => openModal()}>
-        <i class="fas fa-plus"></i>
-        <span class="d-lg-inline d-none ms-2"> {$_('staff.add-new')}</span>
-      </button>
-    </div>
+  <PageActions leftClasses="d-lg-flex d-none" middleClasses="d-lg-flex d-none">
+    <button slot="right" type="button" class="btn btn-secondary" on:click={() => openModal()}>
+      <i class="fas fa-plus"></i>
+      <span class="d-lg-inline d-none ms-2"> {$_('staff.add-new')}</span>
+    </button>
   </PageActions>
 
   <div class="card">
@@ -21,24 +17,16 @@
     {#if !data.staff || data.staff.length === 0}
       <NoContent />
     {:else}
-      <StaffTable 
-        staff={data.staff || []} 
-        loading={false} 
-        on:edit={(e) => openModal(e.detail)} 
+      <StaffTable
+        staff={data.staff || []}
+        {loading}
+        on:edit={(e) => openModal(e.detail)}
         on:delete={(e) => openDeleteModal(e.detail)}
-        on:refresh={refreshData} 
-      />
+        on:refresh={refreshData} />
     {/if}
   </div>
 
-  {#if showModal}
-    <StaffMemberModal 
-      member={selectedStaff} 
-      on:close={() => showModal = false} 
-      on:success={() => { showModal = false; refreshData(); }} 
-    />
-  {/if}
-
+  <svelte:component this={AddEditStaffModal} />
   <svelte:component this={ConfirmDeleteStaffModal} />
 </article>
 
@@ -53,23 +41,23 @@
     const { pageTitle } = await parent();
 
     pageTitle.set('plugins.pano-plugin-staff-page.pages.staff-management.title');
-    
+
     try {
-      const res = await ApiUtil.get({ 
+      const res = await ApiUtil.get({
         path: '/api/panel/staff',
-        request: event
+        request: event,
       });
       return {
         data: {
-          staff: res.staff || []
-        }
+          staff: (res.staff || []).sort((a, b) => a.id - b.id),
+        },
       };
     } catch (e) {
       console.error('Failed to load staff', e);
       return {
         data: {
-          staff: []
-        }
+          staff: [],
+        },
       };
     }
   }
@@ -80,7 +68,10 @@
   import { _ } from '../main';
   import { PageActions, CardHeader, NoContent } from '@panomc/sdk/components/panel';
   import StaffTable from './components/StaffTable.svelte';
-  import StaffMemberModal from './modals/StaffMemberModal.svelte';
+  import AddEditStaffModal, {
+    show as showAddEditStaffModal,
+    setCallback as setAddEditStaffModalCallback,
+  } from './modals/AddEditStaffModal.svelte';
   import ConfirmDeleteStaffModal, {
     show as showDeleteStaffModal,
     setCallback as setDeleteStaffModalCallback,
@@ -88,21 +79,35 @@
 
   export let data;
 
-  let showModal = false;
-  let selectedStaff = null;
+  let loading = false;
 
   async function refreshData() {
-    await goto(`${base}/staff-management`, { invalidateAll: true });
+    loading = true;
+    try {
+      const res = await ApiUtil.get({
+        path: '/api/panel/staff',
+      });
+      data.staff = (res.staff || []).sort((a, b) => a.id - b.id);
+    } catch (e) {
+      console.error('Failed to refresh data', e);
+      // Fallback to routing refresh if manual fetch fails
+      await goto(`${base}/staff-management`, { invalidateAll: true });
+    } finally {
+      loading = false;
+    }
   }
 
   function openModal(member = null) {
-    selectedStaff = member;
-    showModal = true;
+    showAddEditStaffModal(member ? 'edit' : 'create', member);
   }
 
   function openDeleteModal(member) {
     showDeleteStaffModal(member);
   }
+
+  setAddEditStaffModalCallback(() => {
+    refreshData();
+  });
 
   setDeleteStaffModalCallback(() => {
     refreshData();

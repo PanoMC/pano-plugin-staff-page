@@ -7,9 +7,6 @@
           <i class="fas fa-question-circle fa-3x d-block m-auto text-gray border-0 shadow-none"></i>
         </div>
         {$_('staff.confirm-delete')}
-        {#if $member && $member.name}
-          <div class="mt-2 fw-bold">{$member.name}</div>
-        {/if}
       </div>
       <div class="modal-footer flex-nowrap">
         <button
@@ -25,7 +22,8 @@
           class:disabled={loading}
           on:click={onYesClick}>
           {#if loading}
-            <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+            <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"
+            ></span>
           {/if}
           {$_('common.delete') || 'Delete'}
         </button>

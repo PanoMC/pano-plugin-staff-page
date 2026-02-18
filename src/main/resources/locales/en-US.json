@@ -4,7 +4,11 @@
     "cancel": "Cancel",
     "delete": "Delete",
     "add": "Add",
-    "actions": "Actions"
+    "actions": "Actions",
+    "optional": "(Optional)",
+    "loading": "Loading...",
+    "platform": "Platform",
+    "edit": "Edit"
   },
   "pages": {
     "staff-management": {
@@ -12,7 +16,8 @@
       "count": "{count} Staff"
     },
     "staff": {
-      "title": "Our Staff"
+      "title": "Our Staff",
+      "subtitle": "The dedicated team behind our community."
     }
   },
   "staff": {
@@ -20,19 +25,25 @@
     "role": "Role",
     "priority": "Priority",
     "description": "Description",
-    "avatar": "Avatar URL",
+    "avatar": "Avatar Image URL",
     "social-links": "Social Links",
-    "add-new": "Add New Staff",
+    "add-new": "Add Staff",
     "edit": "Edit Staff",
-    "delete": "Delete Staff",
+    "delete": "Delete",
     "confirm-delete": "Are you sure you want to delete this staff member?",
-    "no-staff": "No staff members found."
+    "no-staff": "No staff members found.",
+    "use-minotar": "Use Minotar",
+    "enter-name-first": "Please enter a name first",
+    "url-placeholder": "URL or Username"
   },
   "settings": {
     "title": "Settings",
     "page-url": "Page URL",
+    "page-url-hint": "Public staff page will be accessible at this URL.",
     "view-mode": "View Mode",
+    "view-mode-hint": "Choose how staff members are displayed.",
     "display-location": "Display Location",
+    "display-location-hint": "Where should the staff list be displayed?",
     "display-location-page": "Theme Page",
     "display-location-support": "Support Section"
   },
@@ -41,6 +52,8 @@
     "staff-created": "Staff member created successfully.",
     "staff-updated": "Staff member updated successfully.",
     "delete-success": "Staff member deleted successfully.",
+    "save-error": "Failed to save settings.",
+    "staff-error": "Failed to save staff member.",
     "error": "An error occurred."
   },
   "view-modes": {

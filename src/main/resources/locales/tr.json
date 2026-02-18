@@ -4,7 +4,11 @@
     "cancel": "İptal",
     "delete": "Sil",
     "add": "Ekle",
-    "actions": "İşlemler"
+    "actions": "İşlemler",
+    "optional": "(İsteğe Bağlı)",
+    "loading": "Yükleniyor...",
+    "platform": "Platform",
+    "edit": "Düzenle"
   },
   "pages": {
     "staff-management": {
@@ -12,7 +16,8 @@
       "count": "{count} Kişi"
     },
     "staff": {
-      "title": "Ekibimiz"
+      "title": "Ekibimiz",
+      "subtitle": "Topluluğumuzun arkasındaki özverili ekip."
     }
   },
   "staff": {
@@ -20,19 +25,25 @@
     "role": "Rol",
     "priority": "Öncelik",
     "description": "Açıklama",
-    "avatar": "Avatar URL",
+    "avatar": "Avatar Resim URL'si",
     "social-links": "Sosyal Linkler",
-    "add-new": "Yeni Ekip Üyesi Ekle",
-    "edit": "Üyeyi Düzenle",
-    "delete": "Üyeyi Sil",
+    "add-new": "Ekip Üyesi Ekle",
+    "edit": "Ekip Üyesini Düzenle",
+    "delete": "Sil",
     "confirm-delete": "Bu ekip üyesini silmek istediğinize emin misiniz?",
-    "no-staff": "Ekip üyesi bulunamadı."
+    "no-staff": "Ekip üyesi bulunamadı.",
+    "use-minotar": "Minotar Kullan",
+    "enter-name-first": "Lütfen önce bir isim girin",
+    "url-placeholder": "URL veya Kullanıcı Adı"
   },
   "settings": {
     "title": "Ayarlar",
     "page-url": "Sayfa URL'si",
+    "page-url-hint": "Ekip sayfası bu URL üzerinden erişilebilir olacaktır.",
     "view-mode": "Görünüm Modu",
+    "view-mode-hint": "Ekip üyelerinin nasıl görüntüleneceğini seçin.",
     "display-location": "Görünüm Yeri",
+    "display-location-hint": "Ekip listesi nerede görüntülensin?",
     "display-location-page": "Tema Sayfası",
     "display-location-support": "Destek Bölümü"
   },
@@ -41,6 +52,8 @@
     "staff-created": "Ekip üyesi başarıyla oluşturuldu.",
     "staff-updated": "Ekip üyesi başarıyla güncellendi.",
     "delete-success": "Ekip üyesi başarıyla silindi.",
+    "save-error": "Ayarlar kaydedilemedi.",
+    "staff-error": "Ekip üyesi kaydedilemedi.",
     "error": "Bir hata oluştu."
   },
   "view-modes": {
