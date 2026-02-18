@@ -82,7 +82,7 @@ export default class PanoPluginStaffPage extends PanoPlugin {
             // Add to Theme Nav
             if (pano.ui.nav.site.editNavLinks) {
               pano.ui.nav.site.editNavLinks((navItems) => {
-                if (!navItems.find((n) => n.href === `/${config.pageUrl}`)) {
+                if (!navItems.find((n) => n.href === `${config.pageUrl}`)) {
                   navItems.push({
                     href: `${config.pageUrl}`,
                     text: `plugins.${pluginId}.pages.staff.title`
