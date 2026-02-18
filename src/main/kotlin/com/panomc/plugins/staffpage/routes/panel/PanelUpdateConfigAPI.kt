@@ -7,6 +7,8 @@ import com.panomc.platform.model.*
 import com.panomc.plugins.staffpage.StaffPagePlugin
 import com.panomc.plugins.staffpage.config.StaffPageConfig
 import com.panomc.plugins.staffpage.permission.ManageStaffSettingsPermission
+import com.panomc.platform.db.DatabaseManager
+import com.panomc.plugins.staffpage.log.UpdatedStaffSettingsLog
 import io.vertx.ext.web.RoutingContext
 import io.vertx.ext.web.validation.ValidationHandler
 import io.vertx.ext.web.validation.builder.Bodies
@@ -22,6 +24,10 @@ class PanelUpdateConfigAPI(
 
     private val authProvider by lazy {
         plugin.applicationContext.getBean(AuthProvider::class.java)
+    }
+
+    private val databaseManager by lazy {
+        plugin.applicationContext.getBean(DatabaseManager::class.java)
     }
 
     private val configManager by lazy {
@@ -46,6 +52,15 @@ class PanelUpdateConfigAPI(
 
         val body = context.body().asJsonObject()
         configManager.saveConfig(body)
+
+        val sqlClient = getSqlClient()
+        val userId = authProvider.getUserIdFromRoutingContext(context)
+        val username = databaseManager.userDao.getUsernameFromUserId(userId, sqlClient)!!
+
+        databaseManager.panelActivityLogDao.add(
+            UpdatedStaffSettingsLog(userId, username, plugin.pluginId),
+            sqlClient
+        )
 
         return Successful()
     }

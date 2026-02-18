@@ -70,5 +70,11 @@
             "title": "Настройки команды",
             "description": "Может обновлять внешний вид и настройки страницы команды."
         }
+    },
+    "activity-logs": {
+        "CREATED_STAFF": "<b>{username}</b> создал участника команды: {target}.",
+        "UPDATED_STAFF": "<b>{username}</b> обновил участника команды: {target}.",
+        "DELETED_STAFF": "<b>{username}</b> удалил участника команды: {target}.",
+        "UPDATED_STAFF_SETTINGS": "<b>{username}</b> обновил настройки страницы команды."
     }
 }

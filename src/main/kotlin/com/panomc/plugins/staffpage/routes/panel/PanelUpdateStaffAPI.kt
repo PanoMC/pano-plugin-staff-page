@@ -8,6 +8,8 @@ import com.panomc.plugins.staffpage.StaffPagePlugin
 import com.panomc.plugins.staffpage.db.dao.StaffMemberDao
 import com.panomc.plugins.staffpage.db.model.StaffMember
 import com.panomc.plugins.staffpage.permission.ManageStaffPermission
+import com.panomc.platform.db.DatabaseManager
+import com.panomc.plugins.staffpage.log.UpdatedStaffLog
 import io.vertx.ext.web.RoutingContext
 import io.vertx.ext.web.validation.ValidationHandler
 import io.vertx.ext.web.validation.builder.Bodies
@@ -24,6 +26,10 @@ class PanelUpdateStaffAPI(
 
     private val authProvider by lazy {
         plugin.applicationContext.getBean(AuthProvider::class.java)
+    }
+
+    private val databaseManager by lazy {
+        plugin.applicationContext.getBean(DatabaseManager::class.java)
     }
 
     private val staffMemberDao by lazy {
@@ -64,7 +70,17 @@ class PanelUpdateStaffAPI(
             createdAt = existing.createdAt
         )
 
-        staffMemberDao.update(updated, getSqlClient())
+        val sqlClient = getSqlClient()
+        staffMemberDao.update(updated, sqlClient)
+
+        val userId = authProvider.getUserIdFromRoutingContext(context)
+        val username = databaseManager.userDao.getUsernameFromUserId(userId, sqlClient)!!
+
+        databaseManager.panelActivityLogDao.add(
+            UpdatedStaffLog(userId, username, plugin.pluginId, updated.name),
+            sqlClient
+        )
+
         return Successful()
     }
 }

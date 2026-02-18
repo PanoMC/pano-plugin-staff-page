@@ -7,6 +7,8 @@ import com.panomc.plugins.staffpage.StaffPagePlugin
 import com.panomc.plugins.staffpage.db.dao.StaffMemberDao
 import com.panomc.plugins.staffpage.db.model.StaffMember
 import com.panomc.plugins.staffpage.permission.ManageStaffPermission
+import com.panomc.platform.db.DatabaseManager
+import com.panomc.plugins.staffpage.log.CreatedStaffLog
 import io.vertx.core.json.JsonObject
 import io.vertx.ext.web.RoutingContext
 import io.vertx.ext.web.validation.ValidationHandler
@@ -23,6 +25,10 @@ class PanelCreateStaffAPI(
 
     private val authProvider by lazy {
         plugin.applicationContext.getBean(AuthProvider::class.java)
+    }
+
+    private val databaseManager by lazy {
+        plugin.applicationContext.getBean(DatabaseManager::class.java)
     }
 
     private val staffMemberDao by lazy {
@@ -57,7 +63,17 @@ class PanelCreateStaffAPI(
             description = body.getString("description")
         )
 
-        val id = staffMemberDao.add(staffMember, getSqlClient())
+        val sqlClient = getSqlClient()
+        val id = staffMemberDao.add(staffMember, sqlClient)
+
+        val userId = authProvider.getUserIdFromRoutingContext(context)
+        val username = databaseManager.userDao.getUsernameFromUserId(userId, sqlClient)!!
+
+        databaseManager.panelActivityLogDao.add(
+            CreatedStaffLog(userId, username, plugin.pluginId, staffMember.name),
+            sqlClient
+        )
+
         return Successful(JsonObject().put("id", id).map)
     }
 }

@@ -6,6 +6,9 @@ import com.panomc.platform.model.*
 import com.panomc.plugins.staffpage.StaffPagePlugin
 import com.panomc.plugins.staffpage.db.dao.StaffMemberDao
 import com.panomc.plugins.staffpage.permission.ManageStaffPermission
+import com.panomc.platform.db.DatabaseManager
+import com.panomc.platform.error.NotFound
+import com.panomc.plugins.staffpage.log.DeletedStaffLog
 import io.vertx.ext.web.RoutingContext
 import io.vertx.ext.web.validation.ValidationHandler
 import io.vertx.ext.web.validation.builder.Parameters
@@ -23,6 +26,10 @@ class PanelDeleteStaffAPI(
         plugin.applicationContext.getBean(AuthProvider::class.java)
     }
 
+    private val databaseManager by lazy {
+        plugin.applicationContext.getBean(DatabaseManager::class.java)
+    }
+
     private val staffMemberDao by lazy {
         plugin.pluginBeanContext.getBean(StaffMemberDao::class.java)
     }
@@ -36,7 +43,19 @@ class PanelDeleteStaffAPI(
         authProvider.requirePermission(ManageStaffPermission(), context)
 
         val id = context.pathParam("id").toLong()
-        staffMemberDao.deleteById(id, getSqlClient())
+        val sqlClient = getSqlClient()
+        val staffMember = staffMemberDao.getById(id, sqlClient) ?: throw NotFound()
+
+        staffMemberDao.deleteById(id, sqlClient)
+
+        val userId = authProvider.getUserIdFromRoutingContext(context)
+        val username = databaseManager.userDao.getUsernameFromUserId(userId, sqlClient)!!
+
+        databaseManager.panelActivityLogDao.add(
+            DeletedStaffLog(userId, username, plugin.pluginId, staffMember.name),
+            sqlClient
+        )
+
         return Successful()
     }
 }

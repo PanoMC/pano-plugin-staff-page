@@ -70,5 +70,11 @@
       "title": "Staff Settings",
       "description": "Can update staff page appearance and settings."
     }
+  },
+  "activity-logs": {
+    "CREATED_STAFF": "<b>{username}</b> created staff member: {target}.",
+    "UPDATED_STAFF": "<b>{username}</b> updated staff member: {target}.",
+    "DELETED_STAFF": "<b>{username}</b> deleted staff member: {target}.",
+    "UPDATED_STAFF_SETTINGS": "<b>{username}</b> updated staff page settings."
   }
 }
