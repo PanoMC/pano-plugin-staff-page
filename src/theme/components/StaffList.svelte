@@ -36,7 +36,6 @@
 
 {#if staff.length === 0}
   <NoContent text={$_('staff.no-staff')} />
-  
 {:else if viewMode === 'LIST'}
   <div class="staff-list">
     {#each staff as member}
@@ -48,7 +47,7 @@
           style="width: 80px; height: 80px; object-fit: cover;" />
         <div class="flex-grow-1">
           <h4 class="mb-1">{member.name}</h4>
-          <span class="badge bg-primary-subtle text-primary mb-2">{member.role}</span>
+          <span class="badge text-bg-primary mb-2">{member.role}</span>
           <p class="mb-0 small">{member.description || ''}</p>
         </div>
         <div class="socials d-flex gap-2">
@@ -56,7 +55,7 @@
             <a
               href={url.startsWith('http') ? url : '#'}
               target="_blank"
-              class="btn btn-sm btn-outline-secondary"
+              class="btn btn-sm btn-link link-secondary"
               title={platform}
               aria-label={platform}>
               <i class={getSocialIcon(platform)}></i>
@@ -67,10 +66,10 @@
     {/each}
   </div>
 {:else if viewMode === 'CARD'}
-  <div class="row g-4">
+  <div class="row g-3">
     {#each staff as member}
       <div class="col-md-6 col-lg-4">
-        <div class="staff-card text-center h-100 p-4 border rounded shadow-sm">
+        <div class="staff-card text-center h-100 p-3 border rounded">
           <div class="staff-avatar-wrapper mb-3 position-relative d-inline-block">
             <img
               src={member.avatarUrl ||
@@ -80,8 +79,8 @@
               style="width: 120px; height: 120px; object-fit: cover;" />
           </div>
           <h4 class="mb-1">{member.name}</h4>
-          <div class="text-primary fw-bold mb-3">{member.role}</div>
-          <p class="small mb-4">{member.description || ''}</p>
+          <div class="badge text-bg-primary mx-auto mb-3">{member.role}</div>
+          <p class="mb-3">{member.description || ''}</p>
           <div class="socials d-flex justify-content-center gap-2 mt-auto">
             {#each parseSocial(member.socialLinks) as [platform, url]}
               <a
@@ -113,7 +112,7 @@
           <div class="staff-overlay p-3 d-flex flex-column justify-content-end text-white">
             <div class="fw-bold">{member.name}</div>
             <div class="small opacity-75">{member.role}</div>
-            <div class="socials d-flex gap-2 mt-2">
+            <div class="socials d-flex gap-3 mt-2">
               {#each parseSocial(member.socialLinks) as [platform, url]}
                 <a
                   href={url.startsWith('http') ? url : '#'}
