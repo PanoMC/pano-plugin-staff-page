@@ -12,7 +12,7 @@
   export async function load(event) {
     try {
       const [staffRes, configRes] = await Promise.all([
-        ApiUtil.get({ path: '/api/staff', request: event }),
+        ApiUtil.get({ path: '/api/staffs', request: event }),
         ApiUtil.get({ path: '/api/staff/config', request: event }),
       ]);
 

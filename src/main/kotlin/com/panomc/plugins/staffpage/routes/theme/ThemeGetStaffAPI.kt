@@ -14,7 +14,7 @@ import io.vertx.json.schema.SchemaRepository
 class ThemeGetStaffAPI(
     private val plugin: StaffPagePlugin
 ) : Api() {
-    override val paths = listOf(Path("/api/staff", RouteType.GET))
+    override val paths = listOf(Path("/api/staffs", RouteType.GET))
 
     private val staffMemberDao by lazy {
         plugin.pluginBeanContext.getBean(StaffMemberDao::class.java)

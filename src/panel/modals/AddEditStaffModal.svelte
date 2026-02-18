@@ -266,9 +266,9 @@
 
     try {
       if (currentMode === 'edit') {
-        await ApiUtil.put({ path: `/api/panel/staff/${currentStaff.id}`, body });
+        await ApiUtil.put({ path: `/api/panel/staffs/${currentStaff.id}`, body });
       } else {
-        await ApiUtil.post({ path: '/api/panel/staff', body });
+        await ApiUtil.post({ path: '/api/panel/staffs', body });
       }
 
       showToast(currentMode === 'edit' ? $_('toasts.staff-updated') : $_('toasts.staff-created'));

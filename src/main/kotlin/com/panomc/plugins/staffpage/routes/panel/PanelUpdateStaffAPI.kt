@@ -20,7 +20,7 @@ import io.vertx.json.schema.common.dsl.Schemas.*
 class PanelUpdateStaffAPI(
     private val plugin: StaffPagePlugin
 ) : PanelApi() {
-    override val paths = listOf(Path("/api/panel/staff/:id", RouteType.PUT))
+    override val paths = listOf(Path("/api/panel/staffs/:id", RouteType.PUT))
 
     private val authProvider by lazy {
         plugin.applicationContext.getBean(AuthProvider::class.java)

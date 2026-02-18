@@ -6,7 +6,6 @@ import com.panomc.platform.model.*
 import com.panomc.plugins.staffpage.StaffPagePlugin
 import com.panomc.plugins.staffpage.db.dao.StaffMemberDao
 import com.panomc.plugins.staffpage.permission.ManageStaffPermission
-import io.vertx.core.json.JsonArray
 import io.vertx.core.json.JsonObject
 import io.vertx.ext.web.RoutingContext
 import io.vertx.ext.web.validation.ValidationHandler
@@ -17,7 +16,7 @@ import io.vertx.json.schema.SchemaRepository
 class PanelGetStaffAPI(
     private val plugin: StaffPagePlugin
 ) : PanelApi() {
-    override val paths = listOf(Path("/api/panel/staff", RouteType.GET))
+    override val paths = listOf(Path("/api/panel/staffs", RouteType.GET))
 
     private val authProvider by lazy {
         plugin.applicationContext.getBean(AuthProvider::class.java)

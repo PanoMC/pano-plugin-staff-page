@@ -44,7 +44,7 @@
 
     try {
       const res = await ApiUtil.get({
-        path: '/api/panel/staff',
+        path: '/api/panel/staffs',
         request: event,
       });
       return {
@@ -85,7 +85,7 @@
     loading = true;
     try {
       const res = await ApiUtil.get({
-        path: '/api/panel/staff',
+        path: '/api/panel/staffs',
       });
       data.staff = (res.staff || []).sort((a, b) => a.id - b.id);
     } catch (e) {

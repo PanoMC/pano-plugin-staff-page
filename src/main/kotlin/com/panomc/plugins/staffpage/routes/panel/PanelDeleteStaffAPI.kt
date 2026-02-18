@@ -17,7 +17,7 @@ import io.vertx.json.schema.common.dsl.Schemas.numberSchema
 class PanelDeleteStaffAPI(
     private val plugin: StaffPagePlugin
 ) : PanelApi() {
-    override val paths = listOf(Path("/api/panel/staff/:id", RouteType.DELETE))
+    override val paths = listOf(Path("/api/panel/staffs/:id", RouteType.DELETE))
 
     private val authProvider by lazy {
         plugin.applicationContext.getBean(AuthProvider::class.java)
