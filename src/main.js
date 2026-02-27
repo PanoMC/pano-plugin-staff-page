@@ -73,18 +73,20 @@ export default class PanoPluginStaffPage extends PanoPlugin {
           });
 
           if (config && config.displayLocation === 'THEME_PAGE' && config.pageUrl) {
+            const pageUrl = config.pageUrl.startsWith('/') ? config.pageUrl : `/${config.pageUrl}`;
+
             // Register dynamic route
             pano.ui.page.register({
-              path: `${config.pageUrl}`,
+              path: pageUrl,
               component: staffPageComponent,
             });
 
             // Add to Theme Nav
             if (pano.ui.nav.site.editNavLinks) {
               pano.ui.nav.site.editNavLinks((navItems) => {
-                if (!navItems.find((n) => n.href === `${config.pageUrl}`)) {
+                if (!navItems.find((n) => n.href === pageUrl)) {
                   navItems.push({
-                    href: `${config.pageUrl}`,
+                    href: pageUrl,
                     text: `plugins.${pluginId}.pages.staff.title`
                   });
                 }
