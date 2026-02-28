@@ -99,7 +99,7 @@ export default class PanoPluginStaffPage extends PanoPlugin {
             pano.ui.support.onLoad(async (data, event) => {
               try {
                 const staffRes = await ApiUtil.get({
-                  path: '/api/staff',
+                  path: '/api/staffs',
                   request: event,
                 });
 
