@@ -96,21 +96,15 @@
           </div>
 
           <div class="col-12">
-            <div class="d-flex align-items-center mb-2">
+            <div class="mb-2">
               <label class="form-label mb-0" for="socialInput0">
                 {$_('staff.social-links')}
                 {$_('common.optional')}
               </label>
-              <button
-                class="btn btn-sm btn-primary ms-auto"
-                on:click={addSocial}
-                aria-label="Add social link">
-                {$_('common.add') || 'Add Link'}
-              </button>
             </div>
             {#each $staff.socialLinks as link, i}
-              <div class="hstack gap-2">
-                <div class="input-group mb-2">
+              <div class="hstack gap-2 mb-2 align-items-center">
+                <div class="input-group">
                   <input
                     type="text"
                     id="socialInput{i}"
@@ -127,12 +121,21 @@
                 </div>
 
                 <button
+                  type="button"
                   class="btn-close"
                   on:click={() => removeSocial(i)}
-                  aria-label="Remove social link">
+                  use:tooltip={[$_('common.remove')]}
+                  aria-label={$_('common.remove')}>
                 </button>
               </div>
             {/each}
+            <button
+              type="button"
+              class="btn btn-link w-100 text-decoration-none"
+              on:click={addSocial}>
+              <i class="fas fa-plus me-1"></i>
+              {$_('common.add')}
+            </button>
           </div>
         </div>
       </div>
@@ -211,6 +214,7 @@
   import { _ } from '../../main';
   import ApiUtil from '@panomc/sdk/utils/api';
   import { showToast } from '@panomc/sdk/toasts';
+  import tooltip from '@panomc/sdk/utils/tooltip';
 
   let saving = false;
 

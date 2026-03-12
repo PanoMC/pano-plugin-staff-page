@@ -10,7 +10,7 @@
         aria-label={$_('common.actions') || 'Actions'}>
         <span class="fas fa-ellipsis-v"></span>
       </button>
-      <div class="dropdown-menu animate__animated animate__fadeIn">
+      <div class="dropdown-menu">
         <button type="button" class="dropdown-item" on:click={() => onEdit(member)}>
           <i class="fas fa-pen me-2"></i>
           {$_('common.edit')}
@@ -56,7 +56,7 @@
 
   <!-- Role -->
   <td class="align-middle text-center">
-    <span class="badge text-bg-light">{member.role}</span>
+    <span class="badge text-bg-primary">{member.role}</span>
   </td>
 
   <!-- Priority -->

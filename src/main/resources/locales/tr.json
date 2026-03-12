@@ -5,9 +5,10 @@
     "delete": "Sil",
     "add": "Ekle",
     "actions": "İşlemler",
-    "optional": "(İsteğe Bağlı)",
+    "optional": "(Opsiyonel)",
     "loading": "Yükleniyor...",
     "platform": "Platform",
+    "remove": "Kaldır",
     "edit": "Düzenle"
   },
   "pages": {
@@ -26,7 +27,7 @@
     "priority": "Öncelik",
     "description": "Açıklama",
     "avatar": "Avatar Resim URL'si",
-    "social-links": "Sosyal Linkler",
+    "social-links": "Sosyal Bağlantılar",
     "add-new": "Ekip Üyesi Ekle",
     "edit": "Ekip Üyesini Düzenle",
     "delete": "Sil",
