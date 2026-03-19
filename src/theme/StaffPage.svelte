@@ -1,9 +1,7 @@
-<div class="container vstack gap-3">
-  <PageTitle title={$_('pages.staff.title')} subtitle={$_('pages.staff.subtitle')} />
+<PageTitle title={$_('pages.staff.title')} subtitle={$_('pages.staff.subtitle')} />
 
-  <div class="staff-content">
-    <StaffList {staff} viewMode={config.viewMode} />
-  </div>
+<div class="staff-content">
+  <StaffList {staff} viewMode={config.viewMode} />
 </div>
 
 <script context="module">

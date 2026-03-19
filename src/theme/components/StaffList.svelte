@@ -1,13 +1,4 @@
 <style>
-  .staff-card {
-    transition:
-      transform 0.3s ease,
-      box-shadow 0.3s ease;
-  }
-  .staff-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1) !important;
-  }
   .social-link {
     width: 36px;
     height: 36px;
@@ -15,11 +6,7 @@
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    transition: all 0.2s;
     text-decoration: none;
-  }
-  .social-link:hover {
-    transform: scale(1.1);
   }
   .staff-overlay {
     background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
@@ -41,7 +28,7 @@
     {#each staff as member}
       <div class="staff-item-list d-flex align-items-center p-3 mb-3 border rounded">
         <img
-          src={member.avatarUrl || 'https://api.dicebear.com/7.x/avataaars/svg?seed=' + member.name}
+          src={member.avatarUrl || 'https://minotar.net/helm/' + member.name + '/80'}
           alt={member.name}
           class="rounded-circle me-4"
           style="width: 80px; height: 80px; object-fit: cover;" />
@@ -56,7 +43,7 @@
               href={url.startsWith('http') ? url : '#'}
               target="_blank"
               class="btn btn-sm btn-link link-secondary"
-              title={platform}
+              use:tooltip={[platform]}
               aria-label={platform}>
               <i class={getSocialIcon(platform)}></i>
             </a>
@@ -72,8 +59,7 @@
         <div class="staff-card text-center h-100 p-3 border rounded">
           <div class="staff-avatar-wrapper mb-3 position-relative d-inline-block">
             <img
-              src={member.avatarUrl ||
-                'https://api.dicebear.com/7.x/avataaars/svg?seed=' + member.name}
+              src={member.avatarUrl || 'https://minotar.net/helm/' + member.name + '/120'}
               alt={member.name}
               class="rounded-circle"
               style="width: 120px; height: 120px; object-fit: cover;" />
@@ -87,7 +73,7 @@
                 href={url.startsWith('http') ? url : '#'}
                 target="_blank"
                 class="social-link"
-                title={platform}
+                use:tooltip={[platform]}
                 aria-label={platform}>
                 <i class={getSocialIcon(platform)}></i>
               </a>
@@ -105,8 +91,7 @@
         <div
           class="staff-grid-item position-relative overflow-hidden rounded ratio ratio-1x1 border">
           <img
-            src={member.avatarUrl ||
-              'https://api.dicebear.com/7.x/avataaars/svg?seed=' + member.name}
+            src={member.avatarUrl || 'https://minotar.net/helm/' + member.name + '/256'}
             alt={member.name}
             class="w-100 h-100 object-fit-cover" />
           <div class="staff-overlay p-3 d-flex flex-column justify-content-end text-white">
@@ -118,6 +103,7 @@
                   href={url.startsWith('http') ? url : '#'}
                   target="_blank"
                   class="text-white opacity-75 hover-opacity-100"
+                  use:tooltip={[platform]}
                   aria-label={platform}>
                   <i class={getSocialIcon(platform)}></i>
                 </a>
@@ -133,6 +119,7 @@
 <script>
   import { _ } from '../../main';
   import { NoContent } from '@panomc/sdk/components/theme';
+  import tooltip from '@panomc/sdk/utils/tooltip';
 
   export let staff = [];
   export let viewMode = 'CARD';
