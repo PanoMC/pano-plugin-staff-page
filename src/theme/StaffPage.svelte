@@ -1,11 +1,14 @@
-<PageTitle title={$_('pages.staff.title')} subtitle={$_('pages.staff.subtitle')} />
-
 <div class="staff-content">
   <StaffList {staff} viewMode={config.viewMode} />
 </div>
 
 <script context="module">
-  import ApiUtil from '@panomc/sdk/utils/api';
+    import ApiUtil from '@panomc/sdk/utils/api';
+
+    const pageTitle = {
+    title: 'plugins.pano-plugin-staff-page.pages.staff.title',
+    subtitle: 'plugins.pano-plugin-staff-page.pages.staff.subtitle',
+  };
 
   export async function load(event) {
     try {
@@ -19,6 +22,7 @@
           staff: staffRes.staff || [],
           config: configRes || {},
         },
+        pageTitle,
       };
     } catch (e) {
       console.error('Failed to load staff page data', e);
@@ -27,6 +31,7 @@
           staff: [],
           config: {},
         },
+        pageTitle,
       };
     }
   }
@@ -35,7 +40,6 @@
 <script>
   import { _ } from '../main';
   import StaffList from './components/StaffList.svelte';
-  import { PageTitle } from '@panomc/sdk/components/theme';
 
   export let data;
   $: ({ staff, config } = data);
