@@ -6,7 +6,7 @@
         type="button"
         class="btn btn-link px-2"
         data-bs-toggle="dropdown"
-        use:tooltip={[$_('common.actions') || 'Actions']}
+        title={$_('common.actions') || 'Actions'}
         aria-label={$_('common.actions') || 'Actions'}>
         <span class="fas fa-ellipsis-v"></span>
       </button>
@@ -34,7 +34,7 @@
       type="button"
       class="btn btn-link p-1 focus-ring rounded-pill d-inline-flex align-items-center gap-2 text-decoration-none"
       on:click={() => onEdit(member)}
-      use:tooltip={[$_('common.edit')]}>
+      title={$_('common.edit')}>
       {#if member.avatarUrl}
         <img
           src={member.avatarUrl}
@@ -67,7 +67,6 @@
 
 <script>
   import { _ } from '../../main';
-  import tooltip from '@panomc/sdk/utils/tooltip';
 
   export let member;
   export let onEdit;

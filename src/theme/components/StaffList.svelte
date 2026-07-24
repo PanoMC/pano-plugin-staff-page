@@ -43,7 +43,7 @@
               href={url.startsWith('http') ? url : '#'}
               target="_blank"
               class="btn btn-sm btn-link link-secondary"
-              use:tooltip={[platform]}
+              title={platform}
               aria-label={platform}>
               <i class={getSocialIcon(platform)}></i>
             </a>
@@ -73,7 +73,7 @@
                 href={url.startsWith('http') ? url : '#'}
                 target="_blank"
                 class="social-link"
-                use:tooltip={[platform]}
+                title={platform}
                 aria-label={platform}>
                 <i class={getSocialIcon(platform)}></i>
               </a>
@@ -103,7 +103,7 @@
                   href={url.startsWith('http') ? url : '#'}
                   target="_blank"
                   class="text-white opacity-75 hover-opacity-100"
-                  use:tooltip={[platform]}
+                  title={platform}
                   aria-label={platform}>
                   <i class={getSocialIcon(platform)}></i>
                 </a>
@@ -119,7 +119,6 @@
 <script>
   import { _ } from '../../main';
   import { NoContent } from '@panomc/sdk/components/theme';
-  import tooltip from '@panomc/sdk/utils/tooltip';
 
   export let staff = [];
   export let viewMode = 'CARD';

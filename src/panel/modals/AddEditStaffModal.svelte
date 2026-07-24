@@ -124,7 +124,7 @@
                   type="button"
                   class="btn-close"
                   on:click={() => removeSocial(i)}
-                  use:tooltip={[$_('common.remove')]}
+                  title={$_('common.remove')}
                   aria-label={$_('common.remove')}>
                 </button>
               </div>
@@ -214,7 +214,6 @@
   import { _ } from '../../main';
   import ApiUtil from '@panomc/sdk/utils/api';
   import { showToast } from '@panomc/sdk/toasts';
-  import tooltip from '@panomc/sdk/utils/tooltip';
 
   let saving = false;
 
