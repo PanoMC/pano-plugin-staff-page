@@ -62,8 +62,7 @@
 </script>
 
 <script>
-  import { showToast } from '@panomc/sdk/toasts';
-  import { _ } from '../../main';
+  import { _, showSuccessToast, showErrorToast } from '../../main';
   let loading = false;
 
   async function onYesClick() {
@@ -78,15 +77,15 @@
 
       if (result.error) {
         console.error('Delete failed:', result.error);
-        showToast('Failed to delete staff member');
+        showErrorToast('Failed to delete staff member');
       } else {
-        showToast($_('toasts.delete-success'));
+        showSuccessToast($_('toasts.delete-success'));
         callback(targetMember);
         hide();
       }
     } catch (e) {
       console.error(e);
-      showToast('Error occurred while deleting staff');
+      showErrorToast('Error occurred while deleting staff');
     } finally {
       loading = false;
     }

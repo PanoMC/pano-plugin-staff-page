@@ -112,9 +112,8 @@
 {/if}
 
 <script>
-  import { _ } from '../../main';
+  import { _, showSuccessToast, showErrorToast } from '../../main';
   import ApiUtil from '@panomc/sdk/utils/api';
-  import { showToast } from '@panomc/sdk/toasts';
 
   export let addon;
 
@@ -139,10 +138,10 @@
       });
       addon.config = config; // Update local state for consistency
       initialConfig = JSON.parse(JSON.stringify(config)); // Update initial config to new saved state
-      showToast($_('toasts.save-success'));
+      showSuccessToast($_('toasts.save-success'));
     } catch (e) {
       console.error('Failed to save config', e);
-      showToast($_('toasts.save-error'));
+      showErrorToast($_('toasts.save-error'));
     } finally {
       saving = false;
     }

@@ -211,9 +211,8 @@
 </script>
 
 <script>
-  import { _ } from '../../main';
+  import { _, showSuccessToast, showErrorToast } from '../../main';
   import ApiUtil from '@panomc/sdk/utils/api';
-  import { showToast } from '@panomc/sdk/toasts';
 
   let saving = false;
 
@@ -240,7 +239,7 @@
     if ($staff.name) {
       $staff.avatarUrl = `https://minotar.net/avatar/${$staff.name.trim()}`;
     } else {
-      showToast($_('staff.enter-name-first'));
+      showErrorToast($_('staff.enter-name-first'));
     }
   }
 
@@ -274,7 +273,9 @@
         await ApiUtil.post({ path: '/api/panel/staffs', body });
       }
 
-      showToast(currentMode === 'edit' ? $_('toasts.staff-updated') : $_('toasts.staff-created'));
+      showSuccessToast(
+        currentMode === 'edit' ? $_('toasts.staff-updated') : $_('toasts.staff-created'),
+      );
 
       if (callback) {
         callback();
@@ -283,7 +284,7 @@
       hide();
     } catch (e) {
       console.error('Failed to save staff member', e);
-      showToast($_('toasts.staff-error'));
+      showErrorToast($_('toasts.staff-error'));
     } finally {
       saving = false;
     }

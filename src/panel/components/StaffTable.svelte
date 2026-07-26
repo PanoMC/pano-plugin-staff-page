@@ -31,7 +31,6 @@
   import { createEventDispatcher } from 'svelte';
   import { _ } from '../../main';
   import ApiUtil from '@panomc/sdk/utils/api';
-  import { showToast } from '@panomc/sdk/toasts';
   import StaffRow from './StaffRow.svelte';
 
   export let staff = [];
