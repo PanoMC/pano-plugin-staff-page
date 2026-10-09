@@ -34,7 +34,7 @@
 
 <script context="module">
   import { get, writable } from 'svelte/store';
-  import ApiUtil from '@panomc/sdk/utils/api';
+  import { api } from '@panomc/sdk/plugin-api';
 
   const modalElement = writable();
   const member = writable({});
@@ -71,8 +71,8 @@
 
     try {
       const targetMember = get(member);
-      const result = await ApiUtil.delete({
-        path: `/api/panel/staff/${targetMember.id}`,
+      const result = await api.panel.delete({
+        path: `/staffs/${targetMember.id}`,
       });
 
       if (result.error) {

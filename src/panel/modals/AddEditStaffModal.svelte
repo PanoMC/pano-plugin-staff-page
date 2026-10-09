@@ -212,7 +212,7 @@
 
 <script>
   import { _, showSuccessToast, showErrorToast } from '../../main';
-  import ApiUtil from '@panomc/sdk/utils/api';
+  import { api } from '@panomc/sdk/plugin-api';
 
   let saving = false;
 
@@ -268,9 +268,9 @@
 
     try {
       if (currentMode === 'edit') {
-        await ApiUtil.put({ path: `/api/panel/staffs/${currentStaff.id}`, body });
+        await api.panel.put({ path: `/staffs/${currentStaff.id}`, body });
       } else {
-        await ApiUtil.post({ path: '/api/panel/staffs', body });
+        await api.panel.post({ path: '/staffs', body });
       }
 
       showSuccessToast(

@@ -31,7 +31,7 @@
 </article>
 
 <script context="module">
-  import ApiUtil from '@panomc/sdk/utils/api';
+  import { api } from '@panomc/sdk/plugin-api';
 
   /**
    * @type {import("@sveltejs/kit").PageLoad}
@@ -43,13 +43,13 @@
     pageTitle.set('plugins.pano-plugin-staff-page.pages.staff-management.title');
 
     try {
-      const res = await ApiUtil.get({
-        path: '/api/panel/staffs',
+      const res = await api.panel.get({
+        path: '/staffs',
         request: event,
       });
       return {
         data: {
-          staff: (res.staff || []).sort((a, b) => a.id - b.id),
+          staff: (res.items || []).sort((a, b) => a.id - b.id),
         },
       };
     } catch (e) {
@@ -84,10 +84,10 @@
   async function refreshData() {
     loading = true;
     try {
-      const res = await ApiUtil.get({
-        path: '/api/panel/staffs',
+      const res = await api.panel.get({
+        path: '/staffs',
       });
-      data.staff = (res.staff || []).sort((a, b) => a.id - b.id);
+      data.staff = (res.items || []).sort((a, b) => a.id - b.id);
     } catch (e) {
       console.error('Failed to refresh data', e);
       // Fallback to routing refresh if manual fetch fails

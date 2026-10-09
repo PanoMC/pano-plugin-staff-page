@@ -1,7 +1,7 @@
 import { PanoPlugin, viewComponent } from '@panomc/sdk';
 import { derived } from 'svelte/store';
 import { _ as i18n } from '@panomc/sdk/utils/language';
-import ApiUtil from '@panomc/sdk/utils/api';
+import { api } from '@panomc/sdk/plugin-api';
 import { showToast } from '@panomc/sdk/toasts';
 
 const pluginId = 'pano-plugin-staff-page';
@@ -68,8 +68,8 @@ export default class PanoPluginStaffPage extends PanoPlugin {
         if (data.addon.id !== pluginId) return;
 
         try {
-          const config = await ApiUtil.get({
-            path: '/api/panel/staff/config',
+          const config = await api.panel.get({
+            path: '/staff/config',
             request: event,
           });
           data.addon.config = config;
@@ -80,12 +80,10 @@ export default class PanoPluginStaffPage extends PanoPlugin {
 
     } else {
       // Theme Side
-      const staffPageComponent = viewComponent(() => import('./theme/StaffPage.svelte'));
-
       pano.ui.app.onLoad(async (data, event) => {
         try {
-          const config = await ApiUtil.get({
-            path: '/api/staff/config',
+          const config = await api.get({
+            path: '/staff/config',
             request: event,
           });
 
@@ -95,7 +93,7 @@ export default class PanoPluginStaffPage extends PanoPlugin {
             // Register dynamic route
             pano.ui.page.register({
               path: pageUrl,
-              component: staffPageComponent,
+              view: 'staff-page:StaffPage',
             });
 
             // Add to Theme Nav
@@ -115,20 +113,20 @@ export default class PanoPluginStaffPage extends PanoPlugin {
           if (config && config.displayLocation === 'SUPPORT_PAGE') {
             pano.ui.support.onLoad(async (data, event) => {
               try {
-                const staffRes = await ApiUtil.get({
-                  path: '/api/staffs',
+                const staffRes = await api.get({
+                  path: '/staffs',
                   request: event,
                 });
 
                 data.staffData = {
-                  staff: staffRes.staff || [],
+                  staff: staffRes.items || [],
                   config
                 };
 
                 pano.ui.view.register({
                   viewId: 'support-content',
                   id: `${pluginId}:support-staff`,
-                  component: viewComponent(() => import('./theme/components/StaffIntegration.svelte')),
+                  view: 'staff-page:StaffIntegration',
                   priority: -100,
                 });
               } catch (e) {

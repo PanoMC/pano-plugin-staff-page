@@ -9,14 +9,14 @@ import com.panomc.plugins.staffpage.permission.ManageStaffPermission
 import io.vertx.core.json.JsonObject
 import io.vertx.ext.web.RoutingContext
 import io.vertx.ext.web.validation.ValidationHandler
-import io.vertx.ext.web.validation.builder.ValidationHandlerBuilder
+import com.panomc.platform.schema.dsl.ValidationHandlerBuilder
 import io.vertx.json.schema.SchemaRepository
 
 @Endpoint
 class PanelGetStaffAPI(
     private val plugin: StaffPagePlugin
 ) : PanelApi() {
-    override val paths = listOf(Path("/api/panel/staffs", RouteType.GET))
+    override val paths = listOf(Path("/staffs", RouteType.GET))
 
     private val authProvider by lazy {
         plugin.applicationContext.getBean(AuthProvider::class.java)
@@ -33,6 +33,6 @@ class PanelGetStaffAPI(
     override suspend fun handle(context: RoutingContext): Result {
         authProvider.requirePermission(ManageStaffPermission(), context)
         val staff = staffMemberDao.getAllOrdered(getSqlClient())
-        return Successful(mapOf("staff" to staff.map { JsonObject.mapFrom(it).map }))
+        return Successful(mapOf("items" to staff.map { JsonObject.mapFrom(it).map }))
     }
 }

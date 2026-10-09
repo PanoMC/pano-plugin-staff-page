@@ -1,0 +1,66 @@
+[
+  {
+    "method": "GET",
+    "old": "/api/panel/staff/config",
+    "new": "/api/plugins/pano-plugin-staff-page/panel/staff/config",
+    "relative": "/plugins/pano-plugin-staff-page/panel/staff/config",
+    "class": "PanelGetConfigAPI",
+    "file": "src/main/kotlin/com/panomc/plugins/staffpage/routes/panel/PanelGetConfigAPI.kt"
+  },
+  {
+    "method": "PUT",
+    "old": "/api/panel/staff/config",
+    "new": "/api/plugins/pano-plugin-staff-page/panel/staff/config",
+    "relative": "/plugins/pano-plugin-staff-page/panel/staff/config",
+    "class": "PanelUpdateConfigAPI",
+    "file": "src/main/kotlin/com/panomc/plugins/staffpage/routes/panel/PanelUpdateConfigAPI.kt"
+  },
+  {
+    "method": "GET",
+    "old": "/api/panel/staffs",
+    "new": "/api/plugins/pano-plugin-staff-page/panel/staffs",
+    "relative": "/plugins/pano-plugin-staff-page/panel/staffs",
+    "class": "PanelGetStaffAPI",
+    "file": "src/main/kotlin/com/panomc/plugins/staffpage/routes/panel/PanelGetStaffAPI.kt"
+  },
+  {
+    "method": "POST",
+    "old": "/api/panel/staffs",
+    "new": "/api/plugins/pano-plugin-staff-page/panel/staffs",
+    "relative": "/plugins/pano-plugin-staff-page/panel/staffs",
+    "class": "PanelCreateStaffAPI",
+    "file": "src/main/kotlin/com/panomc/plugins/staffpage/routes/panel/PanelCreateStaffAPI.kt"
+  },
+  {
+    "method": "DELETE",
+    "old": "/api/panel/staffs/:id",
+    "new": "/api/plugins/pano-plugin-staff-page/panel/staffs/:id",
+    "relative": "/plugins/pano-plugin-staff-page/panel/staffs/:id",
+    "class": "PanelDeleteStaffAPI",
+    "file": "src/main/kotlin/com/panomc/plugins/staffpage/routes/panel/PanelDeleteStaffAPI.kt"
+  },
+  {
+    "method": "PUT",
+    "old": "/api/panel/staffs/:id",
+    "new": "/api/plugins/pano-plugin-staff-page/panel/staffs/:id",
+    "relative": "/plugins/pano-plugin-staff-page/panel/staffs/:id",
+    "class": "PanelUpdateStaffAPI",
+    "file": "src/main/kotlin/com/panomc/plugins/staffpage/routes/panel/PanelUpdateStaffAPI.kt"
+  },
+  {
+    "method": "GET",
+    "old": "/api/staff/config",
+    "new": "/api/plugins/pano-plugin-staff-page/staff/config",
+    "relative": "/plugins/pano-plugin-staff-page/staff/config",
+    "class": "ThemeGetConfigAPI",
+    "file": "src/main/kotlin/com/panomc/plugins/staffpage/routes/theme/ThemeGetConfigAPI.kt"
+  },
+  {
+    "method": "GET",
+    "old": "/api/staffs",
+    "new": "/api/plugins/pano-plugin-staff-page/staffs",
+    "relative": "/plugins/pano-plugin-staff-page/staffs",
+    "class": "ThemeGetStaffAPI",
+    "file": "src/main/kotlin/com/panomc/plugins/staffpage/routes/theme/ThemeGetStaffAPI.kt"
+  }
+]

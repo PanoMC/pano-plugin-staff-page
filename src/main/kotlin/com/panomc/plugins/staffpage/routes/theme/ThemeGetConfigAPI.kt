@@ -8,14 +8,25 @@ import com.panomc.plugins.staffpage.config.StaffPageConfig
 import io.vertx.core.json.JsonObject
 import io.vertx.ext.web.RoutingContext
 import io.vertx.ext.web.validation.ValidationHandler
-import io.vertx.ext.web.validation.builder.ValidationHandlerBuilder
+import com.panomc.platform.schema.dsl.ValidationHandlerBuilder
 import io.vertx.json.schema.SchemaRepository
+import com.panomc.platform.schema.EndpointDoc
+import io.vertx.json.schema.common.dsl.Schemas.*
 
 @Endpoint
 class ThemeGetConfigAPI(
     private val plugin: StaffPagePlugin
 ) : Api() {
-    override val paths = listOf(Path("/api/staff/config", RouteType.GET))
+    override val paths = listOf(Path("/staff/config", RouteType.GET))
+
+    override val doc = EndpointDoc(
+        summary = "How the staff page is shown: its address, layout and place.",
+        tag = "staff",
+        response = objectSchema()
+            .requiredProperty("pageUrl", stringSchema())
+            .requiredProperty("viewMode", stringSchema())
+            .requiredProperty("displayLocation", stringSchema())
+    )
 
     private val configManager by lazy {
         plugin.pluginBeanContext.getBean(PluginConfigManager::class.java) as PluginConfigManager<StaffPageConfig>

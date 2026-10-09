@@ -1,9 +1,9 @@
-<div class="staff-content">
+<div class="staff-page-staff-page">
   <StaffList {staff} viewMode={config.viewMode} />
 </div>
 
 <script context="module">
-    import ApiUtil from '@panomc/sdk/utils/api';
+    import { api } from '@panomc/sdk/plugin-api';
 
     const pageTitle = {
     title: 'plugins.pano-plugin-staff-page.pages.staff.title',
@@ -13,13 +13,13 @@
   export async function load(event) {
     try {
       const [staffRes, configRes] = await Promise.all([
-        ApiUtil.get({ path: '/api/staffs', request: event }),
-        ApiUtil.get({ path: '/api/staff/config', request: event }),
+        api.get({ path: '/staffs', request: event }),
+        api.get({ path: '/staff/config', request: event }),
       ]);
 
       return {
         data: {
-          staff: staffRes.staff || [],
+          staff: staffRes.items || [],
           config: configRes || {},
         },
         pageTitle,
@@ -38,8 +38,7 @@
 </script>
 
 <script>
-  import { _ } from '../main';
-  import StaffList from './components/StaffList.svelte';
+  import StaffList from './StaffList.svelte';
 
   export let data;
   $: ({ staff, config } = data);

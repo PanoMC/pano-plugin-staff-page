@@ -1,0 +1,65 @@
+{
+  "controllers": {},
+  "format": 1,
+  "views": {
+    "staff-page:StaffIntegration": {
+      "classes": [
+        "staff-page-staff-integration",
+        "staff-page-staff-integration__title"
+      ],
+      "contract": 1,
+      "hooks": [],
+      "props": {
+        "data": {
+          "required": false
+        }
+      },
+      "slots": []
+    },
+    "staff-page:StaffList": {
+      "classes": [
+        "staff-page-staff-list",
+        "staff-page-staff-list__action",
+        "staff-page-staff-list__avatar",
+        "staff-page-staff-list__badge",
+        "staff-page-staff-list__badge-2",
+        "staff-page-staff-list__card",
+        "staff-page-staff-list__grid-item",
+        "staff-page-staff-list__image",
+        "staff-page-staff-list__image-2",
+        "staff-page-staff-list__image-3",
+        "staff-page-staff-list__item",
+        "staff-page-staff-list__overlay",
+        "staff-page-staff-list__social-hover",
+        "staff-page-staff-list__social-link",
+        "staff-page-staff-list__socials",
+        "staff-page-staff-list__title",
+        "staff-page-staff-list__title-2"
+      ],
+      "contract": 1,
+      "hooks": [],
+      "props": {
+        "staff": {
+          "required": false
+        },
+        "viewMode": {
+          "required": false
+        }
+      },
+      "slots": []
+    },
+    "staff-page:StaffPage": {
+      "classes": [
+        "staff-page-staff-page"
+      ],
+      "contract": 1,
+      "hooks": [],
+      "props": {
+        "data": {
+          "required": true
+        }
+      },
+      "slots": []
+    }
+  }
+}

@@ -11,8 +11,8 @@ import com.panomc.platform.error.NotFound
 import com.panomc.plugins.staffpage.log.DeletedStaffLog
 import io.vertx.ext.web.RoutingContext
 import io.vertx.ext.web.validation.ValidationHandler
-import io.vertx.ext.web.validation.builder.Parameters
-import io.vertx.ext.web.validation.builder.ValidationHandlerBuilder
+import com.panomc.platform.schema.dsl.Parameters
+import com.panomc.platform.schema.dsl.ValidationHandlerBuilder
 import io.vertx.json.schema.SchemaRepository
 import io.vertx.json.schema.common.dsl.Schemas.numberSchema
 
@@ -20,7 +20,7 @@ import io.vertx.json.schema.common.dsl.Schemas.numberSchema
 class PanelDeleteStaffAPI(
     private val plugin: StaffPagePlugin
 ) : PanelApi() {
-    override val paths = listOf(Path("/api/panel/staffs/:id", RouteType.DELETE))
+    override val paths = listOf(Path("/staffs/:id", RouteType.DELETE))
 
     private val authProvider by lazy {
         plugin.applicationContext.getBean(AuthProvider::class.java)
