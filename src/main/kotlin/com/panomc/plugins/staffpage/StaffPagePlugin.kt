@@ -16,8 +16,13 @@ class StaffPagePlugin : PanoPlugin() {
 
     private var isInitialized = false
 
+    /** True between onStart and onStop/onDisable; the setup listener starts the plugin only then. */
+    var isRunning = false
+        private set
+
     override suspend fun onStart() {
         logger.info("Starting Staff Page Plugin...")
+        isRunning = true
         startPlugin()
     }
 
@@ -43,7 +48,12 @@ class StaffPagePlugin : PanoPlugin() {
         logger.info("Staff Page Plugin Enabled!")
     }
 
+    override suspend fun onStop() {
+        isRunning = false
+    }
+
     override suspend fun onDisable() {
+        isRunning = false
         isInitialized = false
     }
 
