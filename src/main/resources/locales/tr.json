@@ -77,5 +77,8 @@
     "UPDATED_STAFF": "<b>{username}</b> bir ekip üyesini güncelledi: {target}.",
     "DELETED_STAFF": "<b>{username}</b> bir ekip üyesini sildi: {target}.",
     "UPDATED_STAFF_SETTINGS": "<b>{username}</b> ekip sayfası ayarlarını güncelledi."
+  },
+  "buttons": {
+    "close": "Kapat"
   }
 }
