@@ -35,4 +35,4 @@ Introduce the people behind your server. Staff Page gives your website a good-lo
 Questions or ideas? Join our [Discord](https://panomc.com/discord) or visit [panomc.com](https://panomc.com).
 
 ## 📄 License
-Released under the GPL-3.0 License.
+Released under the MIT License.
