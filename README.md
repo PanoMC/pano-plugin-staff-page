@@ -13,7 +13,8 @@
 
 Introduce the people behind your server. Staff Page gives your website a good-looking team page with each member's role, Minecraft head, a short bio and their social links. New players see who to ask for help, and your team gets the credit it deserves.
 
-## ✨ Features
+<h3 align="center">Features</h3>
+
 - 👥 **Team page**: show your whole staff on one clean page.
 - 🏷️ **Roles**: give everyone a role badge like Owner, Admin, Builder or Helper.
 - 🧑 **Minecraft heads**: avatars come from each member's Minecraft name, or use your own image.
@@ -22,17 +23,21 @@ Introduce the people behind your server. Staff Page gives your website a good-lo
 - 🔢 **Your order**: choose who appears first.
 - 🎨 **Three layouts**: cards, list or grid, on its own page or in your Support section.
 
-## 📸 Screenshots
+<h3 align="center">Screenshots</h3>
+
 <p align="center"><img src=".github/assets/panel.png" alt="Staff management in the Pano panel" width="900" /></p>
 <p align="center"><i>Add, edit and order your team from the panel.</i></p>
 
-## 🚀 Get started
+<h3 align="center">Get started</h3>
+
 1. Open your Pano panel and go to **Addons**.
 2. Find **Staff Page** and click **Install**.
 3. Open **Staffs** in your panel and click **Add Staff** to add your team.
 
-## 💬 Support
+<h3 align="center">Support</h3>
+
 Questions or ideas? Join our [Discord](https://panomc.com/discord) or visit [panomc.com](https://panomc.com).
 
-## 📄 License
+<h3 align="center">License</h3>
+
 Released under the MIT License.
