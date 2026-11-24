@@ -5,7 +5,7 @@
     "delete": "Sil",
     "add": "Ekle",
     "actions": "İşlemler",
-    "optional": "(Opsiyonel)",
+    "optional": "(İsteğe bağlı)",
     "loading": "Yükleniyor...",
     "platform": "Platform",
     "remove": "Kaldır",
@@ -14,11 +14,15 @@
   "pages": {
     "staff-management": {
       "title": "Ekip",
-      "count": "{count} Kişi"
+      "count": "{count} kişi"
     },
     "staff": {
       "title": "Ekip",
       "subtitle": "Topluluğumuzun arkasındaki özverili ekip."
+    },
+    "support": {
+      "title": "Destek Ekibimiz",
+      "subtitle": "Ekip üyelerimize çekinmeden ulaşabilirsiniz."
     }
   },
   "staff": {
@@ -35,7 +39,8 @@
     "no-staff": "Ekip üyesi bulunamadı.",
     "use-minotar": "Minotar Kullan",
     "enter-name-first": "Lütfen önce bir isim girin",
-    "url-placeholder": "URL veya Kullanıcı Adı"
+    "url-placeholder": "URL veya Kullanıcı Adı",
+    "social-link-url": "Sosyal bağlantı URL'si"
   },
   "settings": {
     "title": "Ayarlar",
@@ -43,7 +48,7 @@
     "page-url-hint": "Ekip sayfası bu URL üzerinden erişilebilir olacaktır.",
     "view-mode": "Görünüm Modu",
     "view-mode-hint": "Ekip üyelerinin nasıl görüntüleneceğini seçin.",
-    "display-location": "Görünüm Yeri",
+    "display-location": "Gösterim Yeri",
     "display-location-hint": "Ekip listesi nerede görüntülensin?",
     "display-location-page": "Tema Sayfası",
     "display-location-support": "Destek Bölümü"
@@ -55,12 +60,13 @@
     "delete-success": "Ekip üyesi başarıyla silindi.",
     "save-error": "Ayarlar kaydedilemedi.",
     "staff-error": "Ekip üyesi kaydedilemedi.",
-    "error": "Bir hata oluştu."
+    "error": "Bir hata oluştu.",
+    "delete-error": "Ekip üyesi silinemedi."
   },
   "view-modes": {
     "list": "Liste",
     "card": "Kart",
-    "grid": "Kare"
+    "grid": "Izgara"
   },
   "permissions": {
     "MANAGE_STAFF": {

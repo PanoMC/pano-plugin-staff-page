@@ -13,12 +13,16 @@
   },
   "pages": {
     "staff-management": {
-      "title": "Staffs",
-      "count": "{count} Staff"
+      "title": "Staff",
+      "count": "{count, plural, one {# staff member} other {# staff members}}"
     },
     "staff": {
       "title": "Staff",
       "subtitle": "The dedicated team behind our community."
+    },
+    "support": {
+      "title": "Our Support Team",
+      "subtitle": "Feel free to reach out to our staff members."
     }
   },
   "staff": {
@@ -35,7 +39,8 @@
     "no-staff": "No staff members found.",
     "use-minotar": "Use Minotar",
     "enter-name-first": "Please enter a name first",
-    "url-placeholder": "URL or Username"
+    "url-placeholder": "URL or Username",
+    "social-link-url": "Social link URL"
   },
   "settings": {
     "title": "Settings",
@@ -55,7 +60,8 @@
     "delete-success": "Staff member deleted successfully.",
     "save-error": "Failed to save settings.",
     "staff-error": "Failed to save staff member.",
-    "error": "An error occurred."
+    "error": "An error occurred.",
+    "delete-error": "Could not delete the staff member."
   },
   "view-modes": {
     "list": "List",

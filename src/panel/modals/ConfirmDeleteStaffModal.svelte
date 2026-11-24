@@ -77,7 +77,7 @@
 
       if (result.error) {
         console.error('Delete failed:', result.error);
-        showErrorToast('Failed to delete staff member');
+        showErrorToast($_('toasts.delete-error'));
       } else {
         showSuccessToast($_('toasts.delete-success'));
         callback(targetMember);
@@ -85,7 +85,7 @@
       }
     } catch (e) {
       console.error(e);
-      showErrorToast('Error occurred while deleting staff');
+      showErrorToast($_('toasts.delete-error'));
     } finally {
       loading = false;
     }

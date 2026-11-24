@@ -117,7 +117,7 @@
                     class="form-control"
                     placeholder={$_('staff.url-placeholder')}
                     bind:value={link.url}
-                    aria-label="Social link URL" />
+                    aria-label={$_('staff.social-link-url')} />
                 </div>
 
                 <button
@@ -267,10 +267,15 @@
     };
 
     try {
-      if (currentMode === 'edit') {
-        await api.panel.put({ path: `/staffs/${currentStaff.id}`, body });
-      } else {
-        await api.panel.post({ path: '/staffs', body });
+      const result =
+        currentMode === 'edit'
+          ? await api.panel.put({ path: `/staffs/${currentStaff.id}`, body })
+          : await api.panel.post({ path: '/staffs', body });
+
+      if (result?.error) {
+        console.error('Failed to save staff member', result.error);
+        showErrorToast($_('toasts.staff-error'));
+        return;
       }
 
       showSuccessToast(

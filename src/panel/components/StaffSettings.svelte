@@ -132,10 +132,15 @@
     if (saving) return;
     saving = true;
     try {
-      await api.panel.put({
+      const result = await api.panel.put({
         path: '/staff/config',
         body: config,
       });
+      if (result?.error) {
+        console.error('Failed to save config', result.error);
+        showErrorToast($_('toasts.save-error'));
+        return;
+      }
       addon.config = config; // Update local state for consistency
       initialConfig = JSON.parse(JSON.stringify(config)); // Update initial config to new saved state
       showSuccessToast($_('toasts.save-success'));
